@@ -1,6 +1,11 @@
 # F42
 Blockchain Group Project
 
+# Referencing & Citation Style
+https://www.library.ln.edu.hk/en/research/publish/citation
+
+https://pla.ln.edu.hk/
+
 # Reference
 https://github.com/inoutcode/bitcoin_book_2nd
 
