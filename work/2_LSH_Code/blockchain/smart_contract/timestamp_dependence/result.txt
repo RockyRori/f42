@@ -1,0 +1,20 @@
+'solc --version' running
+'solc ./VulnerableContract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,C:\File\岭南大学\Project\f42\work\code\smart_contract\timestamp_dependence' running
+INFO:Detectors:
+TimestampDependency.play() (VulnerableContract.sol#7-13) uses a weak PRNG: "block.timestamp % 2 == 0 (VulnerableContract.sol#9)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+TimestampDependency.play() (VulnerableContract.sol#7-13) uses a dangerous strict equality:
+	- block.timestamp % 2 == 0 (VulnerableContract.sol#9)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+TimestampDependency.play() (VulnerableContract.sol#7-13) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp % 2 == 0 (VulnerableContract.sol#9)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Pragma version^0.8.0 (VulnerableContract.sol#2) allows old versions
+solc-0.8.28 is not recommended for deployment
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:./VulnerableContract.sol analyzed (1 contracts with 93 detectors), 5 result(s) found
+[0m
