@@ -1,29 +1,22 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract AccessControlVulnerability {
-    address public owner;
-    uint256 public funds;
+contract VulnerableSwap {
+    address public pancakeRouter;
+    address public ssToken;
 
-    constructor() {
-        // 合约的部署者为合约的所有者
-        owner = msg.sender;
+    constructor(address _pancakeRouter, address _ssToken) {
+        pancakeRouter = _pancakeRouter;
+        ssToken = _ssToken;
     }
 
-    function deposit() public payable {
-        funds += msg.value;
-    }
+    function swapBNBForSSToken(uint256 amount) private {
+        address[] memory path = new address[](2);
+        path[0] = IPancakeRouter02(pancakeRouter).WETH();
+        path[1] = ssToken;
 
-    function withdraw(uint256 amount) public {
-        // 未进行访问控制，任何人都可以调用此函数
-        require(amount <= funds, "Insufficient funds");
-        (bool success, ) = msg.sender.call{value: amount}("");
-        require(success, "Transfer failed");
-
-        funds -= amount;
-    }
-
-    function getFunds() public view returns (uint256) {
-        return funds;
+        IPancakeRouter02(pancakeRouter).swapExactETHForTokensSupportingFeeOnTransferTokens{
+            value: amount
+        }(0, path, address(this), block.timestamp);
     }
 }
