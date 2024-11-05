@@ -51,5 +51,6 @@ jobs:
         working-directory: work/2_LSH_Code/blockchain
         env:
           FLASK_APP: web/app.py
+          PYTHONPATH: "${{ github.workspace }}/work/2_LSH_Code/blockchain"
         run: |
           flask run --host=0.0.0.0 --port=8080
