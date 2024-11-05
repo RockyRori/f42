@@ -1,0 +1,32 @@
+'solc --version' running
+'solc ./VulnerableContract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,C:\File\岭南大学\Project\f42\work\code\smart_contract' running
+INFO:Detectors:
+AccessControlVulnerability.withdraw(uint256) (VulnerableContract.sol#17-24) sends eth to arbitrary user
+	Dangerous calls:
+	- (success) = msg.sender.call{value: amount}() (VulnerableContract.sol#20)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+INFO:Detectors:
+Reentrancy in AccessControlVulnerability.withdraw(uint256) (VulnerableContract.sol#17-24):
+	External calls:
+	- (success) = msg.sender.call{value: amount}() (VulnerableContract.sol#20)
+	State variables written after the call(s):
+	- funds -= amount (VulnerableContract.sol#23)
+	AccessControlVulnerability.funds (VulnerableContract.sol#6) can be used in cross function reentrancies:
+	- AccessControlVulnerability.deposit() (VulnerableContract.sol#13-15)
+	- AccessControlVulnerability.funds (VulnerableContract.sol#6)
+	- AccessControlVulnerability.getFunds() (VulnerableContract.sol#26-28)
+	- AccessControlVulnerability.withdraw(uint256) (VulnerableContract.sol#17-24)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+Pragma version^0.8.0 (VulnerableContract.sol#2) allows old versions
+solc-0.8.28 is not recommended for deployment
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in AccessControlVulnerability.withdraw(uint256) (VulnerableContract.sol#17-24):
+	- (success) = msg.sender.call{value: amount}() (VulnerableContract.sol#20)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+AccessControlVulnerability.owner (VulnerableContract.sol#5) should be immutable
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:./VulnerableContract.sol analyzed (1 contracts with 93 detectors), 6 result(s) found
+[0m

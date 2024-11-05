@@ -1,0 +1,76 @@
+'solc --version' running
+'solc ./VulnerableContract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,C:\File\岭南大学\Project\f42\work\2_LSH_Code\smart_contract' running
+Compilation warnings/errors on ./VulnerableContract.sol:
+Warning: Return value of low-level calls not used.
+  --> VulnerableContract.sol:51:9:
+   |
+51 |         msg.sender.call{value: amount}("");
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Return value of low-level calls not used.
+  --> VulnerableContract.sol:64:13:
+   |
+64 |             users[i].call{value: amountPerUser}("");
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+VulnerableContract.distributeFunds() (VulnerableContract.sol#58-66) sends eth to arbitrary user
+	Dangerous calls:
+	- users[i].call{value: amountPerUser}() (VulnerableContract.sol#64)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+INFO:Detectors:
+VulnerableContract.donate() (VulnerableContract.sol#17-37) uses a weak PRNG: "block.timestamp % 2 == 0 (VulnerableContract.sol#21)" 
+VulnerableContract.playGame() (VulnerableContract.sol#69-74) uses a weak PRNG: "block.timestamp % 2 == 0 (VulnerableContract.sol#70)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+INFO:Detectors:
+Reentrancy in VulnerableContract.withdraw() (VulnerableContract.sol#46-55):
+	External calls:
+	- msg.sender.call{value: amount}() (VulnerableContract.sol#51)
+	State variables written after the call(s):
+	- balances[msg.sender] = 0 (VulnerableContract.sol#54)
+	VulnerableContract.balances (VulnerableContract.sol#6) can be used in cross function reentrancies:
+	- VulnerableContract.balances (VulnerableContract.sol#6)
+	- VulnerableContract.deposit() (VulnerableContract.sol#40-43)
+	- VulnerableContract.donate() (VulnerableContract.sol#17-37)
+	- VulnerableContract.withdraw() (VulnerableContract.sol#46-55)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+VulnerableContract.donate() (VulnerableContract.sol#17-37) uses a dangerous strict equality:
+	- block.timestamp % 2 == 0 (VulnerableContract.sol#21)
+VulnerableContract.playGame() (VulnerableContract.sol#69-74) uses a dangerous strict equality:
+	- block.timestamp % 2 == 0 (VulnerableContract.sol#70)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+VulnerableContract.withdraw() (VulnerableContract.sol#46-55) ignores return value by msg.sender.call{value: amount}() (VulnerableContract.sol#51)
+VulnerableContract.distributeFunds() (VulnerableContract.sol#58-66) ignores return value by users[i].call{value: amountPerUser}() (VulnerableContract.sol#64)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-low-level-calls
+INFO:Detectors:
+VulnerableContract.distributeFunds() (VulnerableContract.sol#58-66) has external calls inside a loop: users[i].call{value: amountPerUser}() (VulnerableContract.sol#64)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+INFO:Detectors:
+VulnerableContract.donate() (VulnerableContract.sol#17-37) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp % 2 == 0 (VulnerableContract.sol#21)
+VulnerableContract.playGame() (VulnerableContract.sol#69-74) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp % 2 == 0 (VulnerableContract.sol#70)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Pragma version^0.8.0 (VulnerableContract.sol#2) allows old versions
+solc-0.8.28 is not recommended for deployment
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in VulnerableContract.withdraw() (VulnerableContract.sol#46-55):
+	- msg.sender.call{value: amount}() (VulnerableContract.sol#51)
+Low level call in VulnerableContract.distributeFunds() (VulnerableContract.sol#58-66):
+	- users[i].call{value: amountPerUser}() (VulnerableContract.sol#64)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Loop condition i < users.length (VulnerableContract.sol#63) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+INFO:Detectors:
+VulnerableContract.owner (VulnerableContract.sol#5) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:./VulnerableContract.sol analyzed (1 contracts with 93 detectors), 17 result(s) found
+[0m
