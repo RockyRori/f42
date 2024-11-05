@@ -43,11 +43,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r /work/2_LSH_Code/blockchain/requirements.txt
+          pip install -r work/2_LSH_Code/blockchain/requirements.txt
 
       # 启动应用程序
       - name: Run Flask App
         env:
-          FLASK_APP: /work/2_LSH_Code/blockchain/web/app.py
+          FLASK_APP: work/2_LSH_Code/blockchain/web/app.py
         run: |
           flask run --host=0.0.0.0 --port=8080

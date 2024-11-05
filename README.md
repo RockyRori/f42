@@ -12,12 +12,12 @@ https://github.com/inoutcode/bitcoin_book_2nd
 # Group Members With Contribution
 | Name | Proposal | Target | Result |
 |------|----------|--------|--------|
-| LSH  | ✓        | ✓      |        |
-| SLL  | ✓        |        |        |
-| HZ   | ✓        |        |        |
-| ZYH  | ✓        |        |        |
-| ZJ   | ✓        |        |        |
-| LLX  | ✓        |        |        |
+| LSH  | ✓        | ✓      | ✓      |
+| SLL  | ✓        | ✓      | ✓      |
+| HZ   | ✓        | ✓      | ✓      |
+| ZYH  | ✓        | ✓      |        |
+| ZJ   | ✓        | ✓      |        |
+| LLX  | ✓        | ✓      |        |
 
 # Timetable
 (Oct31)LSH coding on smart contract
