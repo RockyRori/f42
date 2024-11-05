@@ -9,7 +9,7 @@ from smart_contract.vulnerabilities import check_with_slither
 
 app = Flask(__name__)
 
-contract = "./input.sol"  # 指定智能合约文件路径
+contract = "./input.sol"
 result = "./result.txt"
 
 
@@ -52,4 +52,4 @@ def count(text: str) -> int:
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)

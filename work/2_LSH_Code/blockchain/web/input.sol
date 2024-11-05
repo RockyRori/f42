@@ -26,4 +26,4 @@ contract AccessControlVulnerability {
     function getFunds() public view returns (uint256) {
         return funds;
     }
-}
+}
