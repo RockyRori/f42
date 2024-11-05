@@ -6,17 +6,6 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_initialSupply",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -70,12 +59,12 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "owner",
 						"type": "address"
 					},
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "spender",
 						"type": "address"
 					}
 				],
@@ -94,12 +83,12 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_spender",
+						"name": "spender",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_value",
+						"name": "limit",
 						"type": "uint256"
 					}
 				],
@@ -107,7 +96,7 @@
 				"outputs": [
 					{
 						"internalType": "bool",
-						"name": "success",
+						"name": "",
 						"type": "bool"
 					}
 				],
@@ -118,7 +107,7 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "account",
 						"type": "address"
 					}
 				],
@@ -128,45 +117,6 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "decimals",
-				"outputs": [
-					{
-						"internalType": "uint8",
-						"name": "",
-						"type": "uint8"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "name",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "symbol",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -189,12 +139,12 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_to",
+						"name": "recipient",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_value",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
@@ -202,7 +152,7 @@
 				"outputs": [
 					{
 						"internalType": "bool",
-						"name": "success",
+						"name": "",
 						"type": "bool"
 					}
 				],
@@ -213,17 +163,17 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_from",
+						"name": "sender",
 						"type": "address"
 					},
 					{
 						"internalType": "address",
-						"name": "_to",
+						"name": "recipient",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_value",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
@@ -231,7 +181,7 @@
 				"outputs": [
 					{
 						"internalType": "bool",
-						"name": "success",
+						"name": "",
 						"type": "bool"
 					}
 				],
@@ -252,7 +202,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contract/F42Token.sol": "F42Token"
+			"contract/F42/IERC20.sol": "IERC20"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -266,12 +216,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contract/F42Token.sol": {
-			"keccak256": "0xed44f2c2b38253b6a9fb7368f64ddd3ab87a386b2bd746fb85b8e854f2528c83",
+		"contract/F42/IERC20.sol": {
+			"keccak256": "0xaf970081b0018a556a3ca6e987b7eaa988ee46d777684098a861fd09c71652a2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e59a4504d9e11ee7b21ea7fe78bedd76ef0bf1a95d0cbd6cb5383b7c9462ceaa",
-				"dweb:/ipfs/QmUFbJ2DX83N6sFvg7LPKbarS9bStt6Knn7HFZqwECNZmj"
+				"bzz-raw://09b24e88ec982b361f1a6a71d8c968acf547e1047e7b3b71a4aaccec15f4ec6c",
+				"dweb:/ipfs/QmZw4WcbMob3RoDHFjz2RVH6RZwbESNkCZyUT3TA1yFira"
 			]
 		}
 	},
