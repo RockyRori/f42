@@ -1,0 +1,32 @@
+'solc --version' running
+'solc ./input.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,C:\File\岭南大学\Project\f42\work\code\web' running
+INFO:Detectors:
+AccessControlVulnerability.withdraw(uint256) (input.sol#33-47) sends eth to arbitrary user
+	Dangerous calls:
+	- (success) = msg.sender.call{value: amount}() (input.sol#39)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+INFO:Detectors:
+Reentrancy in AccessControlVulnerability.withdraw(uint256) (input.sol#33-47):
+	External calls:
+	- (success) = msg.sender.call{value: amount}() (input.sol#39)
+	State variables written after the call(s):
+	- funds -= amount (input.sol#45)
+	AccessControlVulnerability.funds (input.sol#11) can be used in cross function reentrancies:
+	- AccessControlVulnerability.deposit() (input.sol#25-29)
+	- AccessControlVulnerability.funds (input.sol#11)
+	- AccessControlVulnerability.getFunds() (input.sol#51-55)
+	- AccessControlVulnerability.withdraw(uint256) (input.sol#33-47)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+Pragma version^0.8.0 (input.sol#3) allows old versions
+solc-0.8.28 is not recommended for deployment
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in AccessControlVulnerability.withdraw(uint256) (input.sol#33-47):
+	- (success) = msg.sender.call{value: amount}() (input.sol#39)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+AccessControlVulnerability.owner (input.sol#9) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:./input.sol analyzed (1 contracts with 93 detectors), 6 result(s) found
+[0m
