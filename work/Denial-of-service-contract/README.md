@@ -1,10 +1,12 @@
 # DENIAL-OF-SERVICE-ATTACK
-Ethical Hacking in Solidity in order to make smart contracts vulnerability-free: The Denial of Service attack 
-
-What the denial of service attack does is that it restricts legitimate users from using the smart contracts permanently or for a certain period of time, which makes it unusable. When it comes to blockchain and smart contracts, there are 3 types of DoS attacks: 
-1. Unexpected Revert
-2. Block Gas Limit 
-3. Block Stuffing 
-
-We will focus here on the first one, Unexpected revert where the attacker uses a smart contract to make such an attack. 
+How did the attack happened?
+     - Victoria sends 1 Ether and becomes king.
+     -  Kemi sends 3 Ether to claim the throne and takes over the role of king, Victoria is refunded back.
+     - Ndiana sends 5 Ether and therefore becomes the new king, Kemu is refunded back the 3 Ether she sent.
+     - The attacker claims the throne by calling the attack function and sends 6 Ether. 
+The attacker is the new king and Ndiana receives her 5 Ether refund.
+From now on, if Mercia or any other person wants to be king and call claimThrone() function,
+the refund to the attacker will revert because the attacker contract has not added the receive() or fallback() function to 
+receive Ether, so that no other person will be able to send Ether after him, 
+the attacker becomes and stays king no matter what. 
 
