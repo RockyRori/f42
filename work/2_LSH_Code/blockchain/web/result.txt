@@ -1,61 +1,29 @@
 'solc --version' running
 'solc ./input.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,C:\File\岭南大学\Project\f42\work\2_LSH_Code\blockchain\web' running
-Compilation warnings/errors on ./input.sol:
-Error: Source "IERC20.sol" not found: File not found. Searched the following locations: "".
- --> input.sol:4:1:
-  |
-4 | import "./IERC20.sol";
-  | ^^^^^^^^^^^^^^^^^^^^^^
-
-
-Traceback (most recent call last):
-  File "C:\Configuration\Python\Python312\Lib\site-packages\crytic_compile\platform\solc.py", line 582, in _run_solc
-    ret: Dict = json.loads(stdout)
-                ^^^^^^^^^^^^^^^^^^
-  File "C:\Configuration\Python\Python312\Lib\json\__init__.py", line 346, in loads
-    return _default_decoder.decode(s)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Configuration\Python\Python312\Lib\json\decoder.py", line 337, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Configuration\Python\Python312\Lib\json\decoder.py", line 355, in raw_decode
-    raise JSONDecodeError("Expecting value", s, err.value) from None
-json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "C:\Configuration\Python\Python312\Scripts\slither.exe\__main__.py", line 7, in <module>
-  File "C:\Configuration\Python\Python312\Lib\site-packages\slither\__main__.py", line 727, in main
-    main_impl(all_detector_classes=detectors, all_printer_classes=printers)
-  File "C:\Configuration\Python\Python312\Lib\site-packages\slither\__main__.py", line 833, in main_impl
-    ) = process_all(filename, args, detector_classes, printer_classes)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Configuration\Python\Python312\Lib\site-packages\slither\__main__.py", line 96, in process_all
-    compilations = compile_all(target, **vars(args))
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Configuration\Python\Python312\Lib\site-packages\crytic_compile\crytic_compile.py", line 718, in compile_all
-    compilations.append(CryticCompile(target, **kwargs))
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Configuration\Python\Python312\Lib\site-packages\crytic_compile\crytic_compile.py", line 207, in __init__
-    self._compile(**kwargs)
-  File "C:\Configuration\Python\Python312\Lib\site-packages\crytic_compile\crytic_compile.py", line 629, in _compile
-    self._platform.compile(self, **kwargs)
-  File "C:\Configuration\Python\Python312\Lib\site-packages\crytic_compile\platform\solc.py", line 151, in compile
-    targets_json = _get_targets_json(compilation_unit, self._target, **kwargs)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Configuration\Python\Python312\Lib\site-packages\crytic_compile\platform\solc.py", line 280, in _get_targets_json
-    return _run_solc(
-           ^^^^^^^^^^
-  File "C:\Configuration\Python\Python312\Lib\site-packages\crytic_compile\platform\solc.py", line 586, in _run_solc
-    raise InvalidCompilation(f"Invalid solc compilation {stderr}")
-crytic_compile.platform.exceptions.InvalidCompilation: Invalid solc compilation Error: Source "IERC20.sol" not found: File not found. Searched the following locations: "".
- --> input.sol:4:1:
-  |
-4 | import "./IERC20.sol";
-  | ^^^^^^^^^^^^^^^^^^^^^^
-
-
+INFO:Detectors:
+Reentrancy in KingofEth.claimThrone() (input.sol#17-37):
+	External calls:
+	- (sent) = king.call{value: balance}() (input.sol#27)
+	State variables written after the call(s):
+	- balance = msg.value (input.sol#33)
+	KingofEth.balance (input.sol#13) can be used in cross function reentrancies:
+	- KingofEth.balance (input.sol#13)
+	- KingofEth.claimThrone() (input.sol#17-37)
+	- king = msg.sender (input.sol#35)
+	KingofEth.king (input.sol#11) can be used in cross function reentrancies:
+	- KingofEth.claimThrone() (input.sol#17-37)
+	- KingofEth.king (input.sol#11)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+INFO:Detectors:
+Pragma version^0.8.0 (input.sol#3) allows old versions
+solc-0.8.28 is not recommended for deployment
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in KingofEth.claimThrone() (input.sol#17-37):
+	- (sent) = king.call{value: balance}() (input.sol#27)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Attack.kingofether (input.sol#51) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:./input.sol analyzed (2 contracts with 93 detectors), 5 result(s) found
 [0m
