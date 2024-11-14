@@ -5,6 +5,8 @@
 
 There should be a version number like 0.10.x otherwise fix this problem
 
+```solc-select use 0.8.28```
+
 ```solc --version```
 
 There should be a version number like 0.8.28+ otherwise fix this problem
