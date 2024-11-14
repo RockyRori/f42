@@ -15,9 +15,9 @@ https://github.com/inoutcode/bitcoin_book_2nd
 | LSH  | ✓        | ✓      | ✓      |
 | SLL  | ✓        | ✓      | ✓      |
 | HZ   | ✓        | ✓      | ✓      |
-| ZYH  | ✓        | ✓      |        |
-| ZJ   | ✓        | ✓      |        |
-| LLX  | ✓        | ✓      |        |
+| ZYH  | ✓        | ✓      | ✓      |
+| ZJ   | ✓        | ✓      | ✓      |
+| LLX  | ✓        | ✓      | ✓      |
 
 # Timetable
 (Oct31)LSH coding on smart contract
