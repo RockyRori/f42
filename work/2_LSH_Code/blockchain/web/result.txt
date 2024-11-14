@@ -1,20 +1,8 @@
 'solc --version' running
 'solc ./input.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,C:\File\岭南大学\Project\f42\work\2_LSH_Code\blockchain\web' running
 INFO:Detectors:
-TimestampDependency.play() (input.sol#13-25) uses a weak PRNG: "block.timestamp % 2 == 0 (input.sol#17)" 
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
-INFO:Detectors:
-TimestampDependency.play() (input.sol#13-25) uses a dangerous strict equality:
-	- block.timestamp % 2 == 0 (input.sol#17)
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
-INFO:Detectors:
-TimestampDependency.play() (input.sol#13-25) uses timestamp for comparisons
-	Dangerous comparisons:
-	- block.timestamp % 2 == 0 (input.sol#17)
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
-INFO:Detectors:
-Pragma version^0.8.0 (input.sol#3) allows old versions
+Pragma version^0.8.28 (input.sol#3) necessitates a version too recent to be trusted. Consider deploying with 0.8.18.
 solc-0.8.28 is not recommended for deployment
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
-INFO:Slither:./input.sol analyzed (1 contracts with 93 detectors), 5 result(s) found
+INFO:Slither:./input.sol analyzed (1 contracts with 93 detectors), 2 result(s) found
 [0m

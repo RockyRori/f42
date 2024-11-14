@@ -1,5 +1,3 @@
-import os
-
 from smart_contract.vulnerabilities import check_with_slither, contract, result
 
 
@@ -26,6 +24,5 @@ def check_reentrancy_with_slither(result_path) -> str:
 
 
 if __name__ == "__main__":
-    if not os.path.exists(result):
-        check_with_slither(contract)
+    check_with_slither(contract)
     check_reentrancy_with_slither(result)

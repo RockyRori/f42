@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 
 from smart_contract.access_control.access_control import check_access_control_with_slither
+from smart_contract.compile_error.compile_error import check_compile_error_with_slither
 from smart_contract.gas_limit.gas_limit import check_gas_limit_with_slither
 from smart_contract.insecure_randomness.insecure_randomness import check_insecure_randomness_with_slither
 from smart_contract.reentrancy_attacks.reentrancy_attacks import check_reentrancy_with_slither
@@ -24,11 +25,11 @@ def home():
     return render_template("index.html", detection=detection, v_num=v_num)
 
 
-def detect_vulnerability(text) -> (str, int):
+def detect_vulnerability(text) -> (str, str):
     with open(contract, "w", encoding="utf-8") as file:
         file.write(text)
 
-    check_with_slither(contract)
+    content = check_with_slither(contract)
     v_num = 0
     reentrancy = check_reentrancy_with_slither(result)
     v_num += count(reentrancy)
@@ -40,11 +41,20 @@ def detect_vulnerability(text) -> (str, int):
     v_num += count(insecure_randomness)
     gas_limit = check_gas_limit_with_slither(result)
     v_num += count(gas_limit)
-    return (f"reentrancy: {reentrancy}\n\n"
-            f"timestamp dependence: {timestamp_dependence}\n\n"
-            f"access control: {access_control}\n\n"
-            f"insecure randomness: {insecure_randomness}\n\n"
-            f"gas limit: {gas_limit}\n\n"), v_num
+
+    if v_num > 0:
+        return (f"reentrancy: {reentrancy}\n\n"
+                f"timestamp dependence: {timestamp_dependence}\n\n"
+                f"access control: {access_control}\n\n"
+                f"insecure randomness: {insecure_randomness}\n\n"
+                f"gas limit: {gas_limit}\n\n"), v_num
+    error_content = check_compile_error_with_slither(result)
+    v_num = count(error_content)
+    if v_num > 0:
+        return f"{error_content}\n", "Compile Error"
+    else:
+        content = "Valid"
+        return f"result: {content}\n", "Not Found"
 
 
 def count(text: str) -> int:

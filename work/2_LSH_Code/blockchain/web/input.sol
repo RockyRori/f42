@@ -1,18 +1,44 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.28;
 
-contract TimestampDependency {
-    address public winner;
+interface IERC20 {
+    // Function Definition
 
-    function play() public {
-        // 通过区块时间戳生成一个伪随机数
-        if (block.timestamp % 2 == 0) {
-            // 时间戳为偶数时，调用者成为赢家
-            winner = msg.sender;
-        }
-    }
+    // It return the total coin amount of self defined contract.
+    function totalSupply() external view returns (uint256);
 
-    function getWinner() public view returns (address) {
-        return winner;
-    }
+    // Check the balance of specific address.
+    function balanceOf(address account) external view returns (uint256);
+
+    // Transfer coin from sender to receiver.
+    function transfer(address recipient, uint256 amount)
+        external
+        returns (bool);
+
+    // Check limit given by owner.
+    function allowance(address owner, address spender)
+        external
+        view
+        returns (uint256);
+
+    // Allow third party to manipulate transaction no more than limit.
+    function approve(address spender, uint256 limit) external returns (bool);
+
+    // Third party transfer coin with permission of sender address.
+    function transferFrom(
+        address sender,
+        address recipient,
+        uint256 amount
+    ) external returns (bool);
+
+    // Event Definition
+
+    // Broadcast transfer action.
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    // Broadcast approve action.
+    event Approval(
+        address indexed owner,
+        address indexed spender,
+        uint256 value
+    );
 }

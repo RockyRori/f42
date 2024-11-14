@@ -1,5 +1,5 @@
 'solc --version' running
-'solc ./VulnerableContract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,C:\File\岭南大学\Project\f42\work\code\smart_contract\reentrancy_attacks' running
+'solc ./VulnerableContract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,C:\File\岭南大学\Project\f42\work\2_LSH_Code\blockchain\smart_contract\reentrancy_attacks' running
 INFO:Detectors:
 Reentrancy in VulnerableContract.withdraw(uint256) (VulnerableContract.sol#11-18):
 	External calls:
