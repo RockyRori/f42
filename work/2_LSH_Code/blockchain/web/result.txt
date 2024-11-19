@@ -4,5 +4,22 @@ INFO:Detectors:
 Pragma version^0.8.28 (input.sol#3) necessitates a version too recent to be trusted. Consider deploying with 0.8.18.
 solc-0.8.28 is not recommended for deployment
 Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
-INFO:Slither:./input.sol analyzed (1 contracts with 93 detectors), 2 result(s) found
+INFO:Detectors:
+Parameter F42Token.transfer(address,uint256)._to (input.sol#133) is not in mixedCase
+Parameter F42Token.transfer(address,uint256)._value (input.sol#133) is not in mixedCase
+Parameter F42Token.approve(address,uint256)._spender (input.sol#161) is not in mixedCase
+Parameter F42Token.approve(address,uint256)._value (input.sol#161) is not in mixedCase
+Parameter F42Token.transferFrom(address,address,uint256)._from (input.sol#187) is not in mixedCase
+Parameter F42Token.transferFrom(address,address,uint256)._to (input.sol#189) is not in mixedCase
+Parameter F42Token.transferFrom(address,address,uint256)._value (input.sol#191) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+F42Token.decimals (input.sol#99) should be constant 
+F42Token.name (input.sol#95) should be constant 
+F42Token.symbol (input.sol#97) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+INFO:Detectors:
+F42Token.totalSupply (input.sol#101) should be immutable 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-immutable
+INFO:Slither:./input.sol analyzed (2 contracts with 93 detectors), 13 result(s) found
 [0m
